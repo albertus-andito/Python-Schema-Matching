@@ -12,12 +12,12 @@ from pathlib import Path
 
 this_directory = Path(__file__).parent
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-p","--path", help="path to the folder containing the test data")
-parser.add_argument("-m", "--model", help="path to the model")
-parser.add_argument("-t", "--threshold", help="threshold for inference")
-parser.add_argument("-s", "--strategy", help="one-to-one or many-to-many or one-to-many", default="many-to-many")
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument("-p","--path", help="path to the folder containing the test data")
+# parser.add_argument("-m", "--model", help="path to the model")
+# parser.add_argument("-t", "--threshold", help="threshold for inference")
+# parser.add_argument("-s", "--strategy", help="one-to-one or many-to-many or one-to-many", default="many-to-many")
+# args = parser.parse_args()
 
 def create_similarity_matrix(table1_df,table2_df,preds,pred_labels_list,strategy="many-to-many"):
     """
@@ -101,13 +101,13 @@ def schema_matching(table1_pth,table2_pth,threshold=None,strategy="many-to-many"
     df_pred,df_pred_labels,predicted_pairs = create_similarity_matrix(table1_df, table2_df, preds, pred_labels_list, strategy=strategy)
     return df_pred,df_pred_labels,predicted_pairs
 
-if __name__ == '__main__':
-    start = time.time()
-    args.path = args.path.rstrip("/")
-    df_pred,df_pred_labels,predicted_pairs = schema_matching(args.path+"/Table1.csv",args.path+"/Table2.csv",threshold=args.threshold,strategy=args.strategy,model_pth=args.model)
-    df_pred.to_csv(args.path+"/similarity_matrix_value.csv",index=True)
-    df_pred_labels.to_csv(args.path+"/similarity_matrix_label.csv",index=True)
+# if __name__ == '__main__':
+#     start = time.time()
+#     args.path = args.path.rstrip("/")
+#     df_pred,df_pred_labels,predicted_pairs = schema_matching(args.path+"/Table1.csv",args.path+"/Table2.csv",threshold=args.threshold,strategy=args.strategy,model_pth=args.model)
+#     df_pred.to_csv(args.path+"/similarity_matrix_value.csv",index=True)
+#     df_pred_labels.to_csv(args.path+"/similarity_matrix_label.csv",index=True)
 
-    for pair_tuple in predicted_pairs:
-        print(pair_tuple)
-    print("schema_matching|Time taken:",time.time()-start)
+#     for pair_tuple in predicted_pairs:
+#         print(pair_tuple)
+#     print("schema_matching|Time taken:",time.time()-start)
