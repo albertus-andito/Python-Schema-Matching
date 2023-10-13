@@ -1,4 +1,4 @@
-from . import init
+from schema_matching import init
 import pandas as pd
 import numpy as np
 import re
