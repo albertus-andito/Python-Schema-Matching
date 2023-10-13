@@ -1,1 +1,1 @@
-from cal_column_similarity import schema_matching
+from schema_matching.cal_column_similarity import schema_matching
